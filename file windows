@@ -1,0 +1,27 @@
+__author__ = 'Budenenko'
+
+"""This script remove file in one directory to another 
+and rename file in output directory"""
+
+import os
+import datetime
+import shutil
+
+#identification data and time
+data_now=datetime.datetime.now() #date and time now
+name_file=data_now.strftime('%d %m %Y  %H %M %S') # formating date
+
+input_dir=('D:\\INPUT')
+output_dir=('D:\\OUTPUT')
+m=os.listdir(input_dir) 
+if m!=[]: #if directory is not empty
+    print ("Remove")
+    #Copy and delete all file in input direction
+    for file in m:
+        n=input_dir+("\\")+file
+        shutil.copy(n,output_dir)
+        os.remove(n)
+        os.renames('D:\\OUTPUT\\'+file,'D:\\OUTPUT\\'+name_file+" "+file)
+else: #if directory is empty
+    print("Empty")
+
